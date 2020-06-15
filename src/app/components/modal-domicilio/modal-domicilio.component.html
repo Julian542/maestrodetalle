@@ -1,0 +1,80 @@
+<div class="modal" id="modalDomicilio" data-backdrop="static" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{edit ? 'Actualizar Domicilio' : 'Agregar Domicilio'}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="formDomicilio" [formGroup]="formDomicilio" (ngSubmit)="onSave(formDomicilio)">
+                    <input type="hidden" name="id" id="id" formControlName="id">
+
+                    <div class="form-group">
+                        <label for="calle">calle</label>
+                        <input type="text" class="form-control" placeholder="calle" formControlName="calle">
+                        <div *ngIf ="formDomicilio.controls['calle'].invalid &&
+                                    formDomicilio.controls['calle'].touched"
+                                    class="is-invalid">
+                                    El calle es obligatorio.
+                        </div>
+                    </div>    
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            <label for="numero">numero</label>
+                            <input type="text" class="form-control" placeholder="numero" formControlName="numero">
+                            <div *ngIf ="formDomicilio.controls['numero'].invalid &&
+                                        formDomicilio.controls['numero'].touched"
+                                        class="is-invalid">
+                                        El numero es obligatorio.
+                            </div>
+                        </div>  
+    
+                        <div class="form-group col-md-6">
+                            <label for="localidad">localidad</label>
+                            <input type="text" class="form-control" placeholder="Horario" formControlName="localidad">
+                            <div *ngIf ="formDomicilio.controls['localidad'].invalid &&
+                                        formDomicilio.controls['localidad'].touched"
+                                        class="is-invalid">
+                                        La localidad es obligatoria.
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            <label for="departamento">departamento</label>
+                            <input type="text" class="form-control" placeholder="departamento" formControlName="departamento">
+                            <div *ngIf ="formDomicilio.controls['departamento'].invalid &&
+                                        formDomicilio.controls['departamento'].touched"
+                                        class="is-invalid">
+                                        El departamento es obligatorio.
+                            </div>
+                        </div>  
+    
+                        <div class="form-group col-md-6">
+                            <label for="piso">piso</label>
+                            <input type="text" class="form-control" placeholder="Horario" formControlName="piso">
+                            <div *ngIf ="formDomicilio.controls['piso'].invalid &&
+                                        formDomicilio.controls['piso'].touched"
+                                        class="is-invalid">
+                                        La piso es obligatoria.
+                            </div>
+                        </div>
+
+                    </div>
+ 
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" #btnClose (click)="onClose()">Cerrar</button>
+                        <button type="submit " class="btn btn-primary " #btnClose [disabled]="formDomicilio.invalid">Guardar Persona</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

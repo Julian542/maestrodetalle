@@ -1,0 +1,45 @@
+<section class="secti">
+    <div class="divi">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-10">
+                <h1>Personas</h1>
+            </div>
+            <div class=" col-xs-12 col-sm-4 col-md-2">
+                <button type="button" class="btn btn-primary float-right ml-3 btn-block" data-toggle="modal" data-target="#modalPersona">+ Agregar</button>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Edad</th>
+                            <th scope="col">Dni</th>
+                            <th scope="col">Domicilios</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let i of personas | paginate: { itemsPerPage: 6, currentPage: pageActual }">
+                            <th scope="row">{{i.id}}</th>
+                            <td>{{i.nombre}}</td>
+                            <td>{{i.apellido}}</td>
+                            <td>{{i.edad}}</td>
+                            <td>{{i.dni}}</td>
+                            <td><a [routerLink]="['domicilios/', i.id]"
+                                >Ver Domicilios</a></td>
+                            <td>
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalPersona" (click)="onPreUpdate(i)">Update</button>
+                                <button type="button" class="btn btn-danger" (click)="delete(i)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>
+<app-modal-persona [personaSeleccionada]="personaSeleccionada"></app-modal-persona>
