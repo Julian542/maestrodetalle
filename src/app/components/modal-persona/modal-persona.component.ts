@@ -91,13 +91,7 @@ export class ModalPersonaComponent implements OnInit {
   }
 
   onClose() {
-    this.personaSeleccionada = {
-      id: 0,
-      nombre:'',
-      apellido:'',
-      edad:null,
-      dni:null
-    };
+    this.personaSeleccionada = null;
   }
 
 }

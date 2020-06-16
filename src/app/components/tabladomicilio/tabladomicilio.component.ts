@@ -61,4 +61,8 @@ export class TabladomicilioComponent implements OnInit {
     this.indice = this.domicilios.indexOf(domicilio);
   }
 
+  resetear(){
+    this.domicilioSeleccionado = null;
+  }
+
 }

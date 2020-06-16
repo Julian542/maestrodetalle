@@ -47,7 +47,7 @@ export class ModalDomicilioComponent implements OnInit {
     this.onBuild();
     this.actRoute.params.subscribe(data=>{
       this.idPersona = data['id'];
-  });
+    });
   }
 
   onBuild() {
@@ -98,14 +98,7 @@ export class ModalDomicilioComponent implements OnInit {
   }
 
   onClose() {
-    this.domicilioSeleccionado = {
-      id: 0,
-      calle: '',
-      numero: null,
-      localidad: '',
-      departamento: '',
-      piso: ''
-    };
+    this.domicilioSeleccionado = null;
   }
 
 }
