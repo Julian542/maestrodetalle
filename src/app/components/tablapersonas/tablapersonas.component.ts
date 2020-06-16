@@ -56,4 +56,8 @@ export class TablapersonasComponent implements OnInit {
     this.indice = this.personas.indexOf(persona);
   }
 
+  resetear(){
+    this.personaSeleccionada = null;
+  }
+
 }

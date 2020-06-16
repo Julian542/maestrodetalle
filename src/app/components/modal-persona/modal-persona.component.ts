@@ -9,6 +9,7 @@ import { Persona } from 'src/app/modelo/persona';
   templateUrl: './modal-persona.component.html',
   styleUrls: ['./modal-persona.component.css']
 })
+
 export class ModalPersonaComponent implements OnInit {
 
   @ViewChild('btnClose', { static: true }) btnClose: ElementRef;
@@ -49,8 +50,8 @@ export class ModalPersonaComponent implements OnInit {
       id: null,
       nombre: new FormControl('', [Validators.required]),
       apellido: new FormControl('', [Validators.required]),
-      edad: new FormControl('', [Validators.required]),
-      dni: new FormControl('', [Validators.required])
+      edad: new FormControl('', [Validators.required, , Validators.pattern(/^[0-9]\d*$/)]),
+      dni: new FormControl('', [Validators.required, , Validators.pattern(/^[0-9]\d*$/)])
     });
   }
 
@@ -98,4 +99,5 @@ export class ModalPersonaComponent implements OnInit {
       dni:null
     };
   }
+
 }

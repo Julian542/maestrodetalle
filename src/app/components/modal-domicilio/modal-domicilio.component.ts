@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { ServiciodomicilioService } from 'src/app/servicios/serviciodomicilio.service';
 import { TabladomicilioComponent } from '../tabladomicilio/tabladomicilio.component';
 import { Domicilio } from 'src/app/modelo/domicilio';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-modal-domicilio',
@@ -10,15 +11,17 @@ import { Domicilio } from 'src/app/modelo/domicilio';
   styleUrls: ['./modal-domicilio.component.css']
 })
 export class ModalDomicilioComponent implements OnInit {
+
   @ViewChild('btnClose', { static: true }) btnClose: ElementRef;
 
   public formDomicilio: FormGroup;
   public domicilio: any;
   public edit = false;
+  public idPersona : number;
 
   constructor(private servicio: ServiciodomicilioService,
-              @Host() private tabla: TabladomicilioComponent,
-              private formBuilder: FormBuilder) { }
+    @Host() private tabla: TabladomicilioComponent,
+    private formBuilder: FormBuilder, private actRoute: ActivatedRoute) { }
 
   @Input() set domicilioSeleccionado(valor) {
     this.onBuild();
@@ -42,13 +45,16 @@ export class ModalDomicilioComponent implements OnInit {
 
   ngOnInit() {
     this.onBuild();
+    this.actRoute.params.subscribe(data=>{
+      this.idPersona = data['id'];
+  });
   }
 
   onBuild() {
     this.formDomicilio = this.formBuilder.group({
       id: null,
       calle: new FormControl('', [Validators.required]),
-      numero: new FormControl('', [Validators.required]),
+      numero: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]),
       localidad: new FormControl('', [Validators.required]),
       departamento: new FormControl('', [Validators.required]),
       piso: new FormControl('', [Validators.required])
@@ -56,6 +62,7 @@ export class ModalDomicilioComponent implements OnInit {
   }
 
   onSave(formDomicilio: FormGroup): void {
+    formDomicilio.value.personaRelacionada = this.idPersona;
     if (formDomicilio.value.id === null) {
       // Add
       this.add(formDomicilio.value);
@@ -81,7 +88,7 @@ export class ModalDomicilioComponent implements OnInit {
   update(domicilio: Domicilio) {
     this.servicio.put(domicilio.id, domicilio).subscribe(
       res => {
-        alert('La domicilio fue actualizada con éxito');
+        alert('El domicilio fue actualizado con éxito');
         this.tabla.domicilios.splice(this.tabla.indice, 1, domicilio);
       },
       err => {
@@ -93,11 +100,11 @@ export class ModalDomicilioComponent implements OnInit {
   onClose() {
     this.domicilioSeleccionado = {
       id: 0,
-    calle : '',
-    numero : null,
-    localidad : '',
-    departamento : '',
-    piso : ''
+      calle: '',
+      numero: null,
+      localidad: '',
+      departamento: '',
+      piso: ''
     };
   }
 

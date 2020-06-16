@@ -12,34 +12,35 @@
                     <input type="hidden" name="id" id="id" formControlName="id">
 
                     <div class="form-group">
-                        <label for="calle">calle</label>
-                        <input type="text" class="form-control" placeholder="calle" formControlName="calle">
+                        <label for="calle">Calle</label>
+                        <input type="text" class="form-control" placeholder="Calle" formControlName="calle">
                         <div *ngIf ="formDomicilio.controls['calle'].invalid &&
                                     formDomicilio.controls['calle'].touched"
                                     class="is-invalid">
-                                    El calle es obligatorio.
+                                    Calle requerida.
                         </div>
                     </div>    
 
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
-                            <label for="numero">numero</label>
-                            <input type="text" class="form-control" placeholder="numero" formControlName="numero">
+                            <label for="numero">Número</label>
+                            <input type="text" class="form-control" placeholder="Número" formControlName="numero">
                             <div *ngIf ="formDomicilio.controls['numero'].invalid &&
                                         formDomicilio.controls['numero'].touched"
                                         class="is-invalid">
-                                        El numero es obligatorio.
+                                        Número requerido.
+                                        Solo se permiten números.
                             </div>
                         </div>  
     
                         <div class="form-group col-md-6">
-                            <label for="localidad">localidad</label>
-                            <input type="text" class="form-control" placeholder="Horario" formControlName="localidad">
+                            <label for="localidad">Localidad</label>
+                            <input type="text" class="form-control" placeholder="Localidad" formControlName="localidad">
                             <div *ngIf ="formDomicilio.controls['localidad'].invalid &&
                                         formDomicilio.controls['localidad'].touched"
                                         class="is-invalid">
-                                        La localidad es obligatoria.
+                                        La localidad es requerida.
                             </div>
                         </div>
 
@@ -47,27 +48,26 @@
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
-                            <label for="departamento">departamento</label>
-                            <input type="text" class="form-control" placeholder="departamento" formControlName="departamento">
+                            <label for="departamento">Departamento</label>
+                            <input type="text" class="form-control" placeholder="Departamento" formControlName="departamento">
                             <div *ngIf ="formDomicilio.controls['departamento'].invalid &&
                                         formDomicilio.controls['departamento'].touched"
                                         class="is-invalid">
-                                        El departamento es obligatorio.
+                                        El departamento es requerido.
                             </div>
                         </div>  
     
                         <div class="form-group col-md-6">
-                            <label for="piso">piso</label>
-                            <input type="text" class="form-control" placeholder="Horario" formControlName="piso">
+                            <label for="piso">Piso</label>
+                            <input type="text" class="form-control" placeholder="Piso" formControlName="piso">
                             <div *ngIf ="formDomicilio.controls['piso'].invalid &&
                                         formDomicilio.controls['piso'].touched"
                                         class="is-invalid">
-                                        La piso es obligatoria.
+                                        El piso es requerido.
                             </div>
                         </div>
 
                     </div>
- 
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" #btnClose (click)="onClose()">Cerrar</button>

@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">{{edit ? 'Actualizar Persona' : 'Agregar Persona'}}</h5>
+                <h5 class="modal-title">{{edit ? 'Actualizar persona' : 'Agregar persona'}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -13,7 +13,7 @@
 
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" placeholder="nombre" formControlName="nombre">
+                        <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
                         <div *ngIf ="formPersona.controls['nombre'].invalid &&
                                     formPersona.controls['nombre'].touched"
                                     class="is-invalid">
@@ -25,7 +25,7 @@
 
                         <div class="form-group col-md-6">
                             <label for="apellido">Apellido</label>
-                            <input type="text" class="form-control" placeholder="apellido" formControlName="apellido">
+                            <input type="text" class="form-control" placeholder="Apellido" formControlName="apellido">
                             <div *ngIf ="formPersona.controls['apellido'].invalid &&
                                         formPersona.controls['apellido'].touched"
                                         class="is-invalid">
@@ -35,11 +35,12 @@
     
                         <div class="form-group col-md-6">
                             <label for="edad">Edad</label>
-                            <input type="text" class="form-control" placeholder="Horario" formControlName="edad">
+                            <input type="text" class="form-control" placeholder="Edad" formControlName="edad">
                             <div *ngIf ="formPersona.controls['edad'].invalid &&
                                         formPersona.controls['edad'].touched"
                                         class="is-invalid">
                                         La edad es obligatoria.
+                                        Solo se permiten números.
                             </div>
                         </div>
 
@@ -47,11 +48,12 @@
 
                     <div class="form-group">
                         <label for="dni">DNI</label>
-                        <input type="text" class="form-control" placeholder="Quienes somos" formControlName="dni">
+                        <input type="text" class="form-control" placeholder="DNI" formControlName="dni">
                         <div *ngIf ="formPersona.controls['dni'].invalid &&
                         formPersona.controls['dni'].touched"
                                     class="is-invalid">
-                                    DNI es obligatorio.
+                                    El DNI es obligatorio.
+                                    Solo se permiten números.
                         </div>
                     </div>  
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Domicilio } from 'src/app/modelo/domicilio';
 import { ServiciodomicilioService } from 'src/app/servicios/serviciodomicilio.service';
-import { Router, ActivatedRoute} from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-tabladomicilio',
@@ -20,13 +20,16 @@ export class TabladomicilioComponent implements OnInit {
     numero : null,
     localidad : '',
     departamento : '',
-    piso : ''
+    piso : '', 
+    personaRelacionada: null
   };
 
-  constructor(private servicio: ServiciodomicilioService, private router:Router, private actRoute:ActivatedRoute) { }
+  constructor(private servicio: ServiciodomicilioService, private actRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.actRoute.params.subscribe((data)=>{ this.getAllDomicilios(data['id']); });
+    this.actRoute.params.subscribe((data)=>{ 
+      this.getAllDomicilios(data['id']);
+  });
   }
 
   getAllDomicilios(id:number) {

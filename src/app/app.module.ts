@@ -1,3 +1,4 @@
+import { ServiciopersonaService } from './servicios/serviciopersona.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -5,13 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TablapersonasComponent } from './components/tablapersonas/tablapersonas.component';
 import { TabladomicilioComponent } from './components/tabladomicilio/tabladomicilio.component';
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { ModalPersonaComponent } from './components/modal-persona/modal-persona.component';
 import { ModalDomicilioComponent } from './components/modal-domicilio/modal-domicilio.component';
-import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
-
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -19,16 +19,18 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
     TablapersonasComponent,
     TabladomicilioComponent,
     ModalPersonaComponent,
-    ModalDomicilioComponent
+    ModalDomicilioComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [ServiciopersonaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
