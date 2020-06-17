@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">{{edit ? 'Actualizar Domicilio' : 'Agregar Domicilio'}}</h5>
+                <h5 class="modal-title">{{edit ? 'Actualizar' : 'Agregar'}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -71,7 +71,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" #btnClose (click)="onClose()">Cerrar</button>
-                        <button type="submit " class="btn btn-primary " #btnClose [disabled]="formDomicilio.invalid">Guardar Persona</button>
+                        <button type="submit " class="btn btn-primary " #btnClose [disabled]="formDomicilio.invalid">Guardar Domicilio</button>
                     </div>
                 </form>
             </div>

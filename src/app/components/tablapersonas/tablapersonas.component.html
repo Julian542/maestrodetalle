@@ -23,15 +23,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let i of personas | paginate: { itemsPerPage: 6, currentPage: pageActual }">
+                        <tr *ngFor="let i of personas | paginate: { itemsPerPage: 10, currentPage: pageActual };let indice=index">
                             <th scope="row">{{i.id}}</th>
                             <td>{{i.nombre}}</td>
                             <td>{{i.apellido}}</td>
                             <td>{{i.edad}}</td>
                             <td>{{i.dni}}</td>
-                            <td><a [routerLink]="['domicilios/',i.id]">Ver domicilio/s</a></td>
+                            <td><button type="button" class="btn btn-primary float-right ml-3 btn-block" data-toggle="modal" data-target="#modalTablaDomicilio" (click)="abrirDom(i.id)">Ver domicilio/s</button></td>
                             <td>
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalPersona" (click)="onPreUpdate(i)">Actualizar</button>
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalPersona" (click)="onPreUpdate(i, indice)">Actualizar</button>
                                 <button type="button" class="btn btn-danger" (click)="delete(i)">Eliminar</button>
                             </td>
                         </tr>
@@ -42,4 +42,5 @@
         </div>
     </div>
 </section>
-<app-modal-persona [personaSeleccionada]="personaSeleccionada"></app-modal-persona>
+<app-modal-persona [personaSeleccionada]="personaSeleccionada" [indicePosicion]="indicePosicion"></app-modal-persona>
+<app-modal-tabladomicilio [id]="id"></app-modal-tabladomicilio>

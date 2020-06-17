@@ -17,10 +17,18 @@ export class ModalPersonaComponent implements OnInit {
   public formPersona: FormGroup;
   public persona: any;
   public edit = false;
+  public indice: number;
+  public indiceP: number;
 
   constructor(private servicio: ServiciopersonaService,
-              @Host() private tabla: TablapersonasComponent,
-              private formBuilder: FormBuilder) { }
+    @Host() private tabla: TablapersonasComponent,
+    private formBuilder: FormBuilder) { }
+
+  @Input() set indicePosicion(valor) {
+    if (valor) {
+      this.indiceP = valor;
+    }
+  }
 
   @Input() set personaSeleccionada(valor) {
     this.onBuild();
@@ -82,12 +90,14 @@ export class ModalPersonaComponent implements OnInit {
     this.servicio.put(persona.id, persona).subscribe(
       res => {
         alert('La persona fue actualizada con éxito');
-        this.tabla.personas.splice(this.tabla.indice, 1, persona);
+        this.tabla.personas.splice(this.indiceP, 1, persona);
+        this.indiceP = null;
       },
       err => {
         alert('Ocurrió un error al actualizar persona');
       }
     );
+    
   }
 
   onClose() {

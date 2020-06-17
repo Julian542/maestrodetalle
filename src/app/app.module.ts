@@ -1,3 +1,4 @@
+import { ModalTabladomicilioComponent } from './components/modal-tabladomicilio/modal-tabladomicilio.component';
 import { ServiciopersonaService } from './servicios/serviciopersona.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -5,7 +6,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TablapersonasComponent } from './components/tablapersonas/tablapersonas.component';
-import { TabladomicilioComponent } from './components/tabladomicilio/tabladomicilio.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalPersonaComponent } from './components/modal-persona/modal-persona.component';
 import { ModalDomicilioComponent } from './components/modal-domicilio/modal-domicilio.component';
@@ -17,7 +17,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   declarations: [
     AppComponent,
     TablapersonasComponent,
-    TabladomicilioComponent,
+    ModalTabladomicilioComponent,
     ModalPersonaComponent,
     ModalDomicilioComponent,
     NavbarComponent
@@ -28,7 +28,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HttpClientModule,
     FormsModule,
     NgxPaginationModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [ServiciopersonaService],
   bootstrap: [AppComponent]

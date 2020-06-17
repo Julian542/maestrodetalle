@@ -1,7 +1,7 @@
+import { ModalTabladomicilioComponent } from './../modal-tabladomicilio/modal-tabladomicilio.component';
 import { Component, OnInit, ViewChild, ElementRef, Host, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ServiciodomicilioService } from 'src/app/servicios/serviciodomicilio.service';
-import { TabladomicilioComponent } from '../tabladomicilio/tabladomicilio.component';
 import { Domicilio } from 'src/app/modelo/domicilio';
 import { ActivatedRoute } from '@angular/router';
 
@@ -17,12 +17,24 @@ export class ModalDomicilioComponent implements OnInit {
   public formDomicilio: FormGroup;
   public domicilio: any;
   public edit = false;
-  public idPersona : number;
+  public idPersona: number;
+  public indiceP: number;
 
   constructor(private servicio: ServiciodomicilioService,
-    @Host() private tabla: TabladomicilioComponent,
+    @Host() private tabla: ModalTabladomicilioComponent,
     private formBuilder: FormBuilder, private actRoute: ActivatedRoute) { }
 
+  @Input() set id(valor: number) {
+    if (valor) {
+      this.idPersona = valor;
+    }
+  }
+
+  @Input() set indicePosicion(valor) {
+    if (valor) {
+      this.indiceP = valor;
+    }
+  }
   @Input() set domicilioSeleccionado(valor) {
     this.onBuild();
     if (valor) {
@@ -45,9 +57,6 @@ export class ModalDomicilioComponent implements OnInit {
 
   ngOnInit() {
     this.onBuild();
-    this.actRoute.params.subscribe(data=>{
-      this.idPersona = data['id'];
-    });
   }
 
   onBuild() {
@@ -89,7 +98,8 @@ export class ModalDomicilioComponent implements OnInit {
     this.servicio.put(domicilio.id, domicilio).subscribe(
       res => {
         alert('El domicilio fue actualizado con éxito');
-        this.tabla.domicilios.splice(this.tabla.indice, 1, domicilio);
+        this.tabla.domicilios.splice(this.indiceP, 1, domicilio);
+        this.indiceP = null;
       },
       err => {
         alert('Ocurrió un error al actualizar domicilio');

@@ -12,6 +12,10 @@ export class TablapersonasComponent implements OnInit {
   pageActual: number = 1;
   public personas: Persona[];
   indice: number;
+  indicePosicion: number;
+
+  public id: number;
+  
 
   public personaSeleccionada: Persona = {
     id: 0,
@@ -51,13 +55,18 @@ export class TablapersonasComponent implements OnInit {
     }
   }
 
-  onPreUpdate(persona: Persona) {
+  onPreUpdate(persona: Persona, indice: number) {
     this.personaSeleccionada = persona;
     this.indice = this.personas.indexOf(persona);
+    this.indicePosicion = indice;
   }
 
   resetear(){
     this.personaSeleccionada = null;
+  }
+
+  abrirDom(id:number){
+    this.id=id;
   }
 
 }
